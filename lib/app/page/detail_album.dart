@@ -1,8 +1,8 @@
 import 'dart:ui';
 
+import 'package:app_demo/app/Core/models/TypeAlbum.dart';
+import 'package:app_demo/app/page/carrocel.dart';
 import 'package:flutter/material.dart';
-
-import 'carrocel.dart';
 
 class DeailPage extends StatefulWidget {
   DeailPage({Key key}) : super(key: key);
@@ -18,27 +18,14 @@ class _DeailPagePageState extends State<DeailPage> {
   bool isActive = true;
   bool isActiveSize = true;
   String total;
-  final _formKey = GlobalKey<FormState>();
   var _formtitleKey = GlobalKey<FormFieldState>();
   String title = "Mis fotos";
 
-  Map<String, double> pricePasta = {'dura': 300, 'suave': 150};
+  Map<String, double> pricePasta = {'suave': 150, 'dura': 300};
   Map<String, double> priceSize = {'chico': 49, 'grande': 199};
-
-  _setPropertyAlbum() {
-    typeAlbum.title = title;
-    typeAlbum.pasta = "Dura";
-    typeAlbum.pricePasta =
-        pricePasta.entries.firstWhere((x) => x.key == "suave").value;
-    typeAlbum.priceSize =
-        priceSize.entries.firstWhere((x) => x.key == "chico").value;
-    typeAlbum.date = isSwitched;
-    _setTotalAlbum();
-  }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _setPropertyAlbum();
   }
@@ -142,7 +129,27 @@ class _DeailPagePageState extends State<DeailPage> {
                                 height: 150,
                                 width: 200,
                               ),
-                            )
+                            ),
+                            Container(
+                                alignment: Alignment.bottomRight,
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(30),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                          colors: [
+                                            Colors.orange,
+                                            Colors.red
+                                          ])),
+                                  child: const Icon(
+                                    Icons.edit,
+                                    color: Colors.white,
+                                    size: 25,
+                                    textDirection: TextDirection.rtl,
+                                  ),
+                                )),
                           ],
                         ),
                       ),
@@ -313,20 +320,8 @@ class _DeailPagePageState extends State<DeailPage> {
               isActive = true;
             });
 
-            var x = tipoPasta()
-                .where((test) => (test.key == ValueKey("pastasuave")))
-                .toList();
-            var doc = x.first;
-            var po = doc as Container;
-            var po1 = po.child as Card;
-            var po2 = po1.child as ListTile;
-
-            if (po2.selected) {
-              typeAlbum.pasta = "Suave";
-              typeAlbum.pricePasta =
-                  pricePasta.entries.firstWhere((x) => x.key == "suave").value;
-              _setTotalAlbum();
-            }
+            var listTitle = _getType(tipoPasta(), "pastasuave");
+            _setPricePasta("Suave", "suave", listTitle);
           },
         )),
       ),
@@ -349,20 +344,8 @@ class _DeailPagePageState extends State<DeailPage> {
               isActive = false;
             });
 
-            var x = tipoPasta()
-                .where((test) => (test.key == ValueKey("pastadura")))
-                .toList();
-            var doc = x.first;
-            var po = doc as Container;
-            var po1 = po.child as Card;
-            var po2 = po1.child as ListTile;
-
-            if (po2.selected) {
-              typeAlbum.pasta = "Dura";
-              typeAlbum.pricePasta =
-                  pricePasta.entries.firstWhere((x) => x.key == "dura").value;
-              _setTotalAlbum();
-            }
+            var listTitle = _getType(tipoPasta(), "pastadura");
+            _setPricePasta("Dura", "dura", listTitle);
           },
         )),
       ),
@@ -403,22 +386,8 @@ class _DeailPagePageState extends State<DeailPage> {
             setState(() {
               isActiveSize = true;
             });
-
-            var x = tamanioPasta()
-                .where((test) => (test.key == ValueKey("pastachico")))
-                .toList();
-            var doc = x.first;
-            var po = doc as Container;
-            var po1 = po.child as Card;
-            var po2 = po1.child as ListTile;
-
-            if (po2.selected) {
-              typeAlbum.pasta = "Chico";
-              typeAlbum.priceSize =
-                  priceSize.entries.firstWhere((x) => x.key == "chico").value;
-              _setTotalAlbum();
-            }
-            // _showSnackBar();
+            var listTitle = _getType(tamanioPasta(), "pastachico");
+            _setPriceSize("Chico", "chico", listTitle);
           },
         )),
       ),
@@ -440,20 +409,9 @@ class _DeailPagePageState extends State<DeailPage> {
               isActiveSize = false;
             });
 
-            var x = tamanioPasta()
-                .where((test) => (test.key == ValueKey("pastagrande")))
-                .toList();
-            var doc = x.first;
-            var po = doc as Container;
-            var po1 = po.child as Card;
-            var po2 = po1.child as ListTile;
+            var listTitle = _getType(tamanioPasta(), "pastagrande");
+            _setPriceSize("Grande", "grande", listTitle);
 
-            if (po2.selected) {
-              typeAlbum.pasta = "Grande";
-              typeAlbum.priceSize =
-                  priceSize.entries.firstWhere((x) => x.key == "grande").value;
-              _setTotalAlbum();
-            }
             // _showSnackBar();
           },
         )),
@@ -547,7 +505,7 @@ class _DeailPagePageState extends State<DeailPage> {
     );
   }
 
-  void _onFromTapped() {
+  _onFromTapped() {
     FocusScopeNode current = FocusScope.of(context);
     current.previousFocus();
   }
@@ -556,22 +514,44 @@ class _DeailPagePageState extends State<DeailPage> {
     typeAlbum.total = typeAlbum.priceSize + typeAlbum.pricePasta;
     total = typeAlbum.total.toStringAsFixed(2);
   }
-}
 
-class TypeAlbum {
-  String title;
-  String pasta;
-  String size;
-  bool date;
-  double total;
-  double pricePasta;
-  double priceSize;
+  ListTile _getType(List<Widget> listData, String value) {
+    var listContainer =
+        listData.where((test) => (test.key == ValueKey(value))).toList();
+    var widget = listContainer.first;
+    var container = widget as Container;
+    var card = container.child as Card;
+    var listTitle = card.child as ListTile;
 
-  setPricePasta(double price) {
-    pricePasta = price;
+    return listTitle;
   }
 
-  setPriceSize(double price) {
-    priceSize = price;
+  _setPricePasta(String name, String key, ListTile listTitle) {
+    if (listTitle.selected) {
+      typeAlbum.pasta = name;
+      typeAlbum.pricePasta =
+          pricePasta.entries.firstWhere((x) => x.key == key).value;
+      _setTotalAlbum();
+    }
+  }
+
+  _setPriceSize(String name, String key, ListTile listTitle) {
+    if (listTitle.selected) {
+      typeAlbum.size = name;
+      typeAlbum.priceSize =
+          priceSize.entries.firstWhere((x) => x.key == key).value;
+      _setTotalAlbum();
+    }
+  }
+
+  _setPropertyAlbum() {
+    typeAlbum.title = title;
+    typeAlbum.pasta = "Dura";
+    typeAlbum.pricePasta =
+        pricePasta.entries.firstWhere((x) => x.key == "suave").value;
+    typeAlbum.priceSize =
+        priceSize.entries.firstWhere((x) => x.key == "chico").value;
+    typeAlbum.date = isSwitched;
+    _setTotalAlbum();
   }
 }
