@@ -1,5 +1,6 @@
 import 'package:app_demo/app/page/HomePage.dart';
 import 'package:app_demo/app/page/signup.dart';
+import 'package:app_demo/app/shared/login/InputFieldArea.dart';
 import 'package:app_demo/app/themes/background.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -270,3 +271,34 @@ Widget _divider() {
   }
   }
 
+class FormContainer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return (new Container(
+      margin: new EdgeInsets.symmetric(horizontal: 20.0),
+      child: new Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          new Form(
+              child: new Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              new InputFieldArea(
+                hint: "Usuario",
+                obscure: false,
+                icon: Icons.person_outline,
+              ),
+              new InputFieldArea(
+                hint: "Contraseña",
+                obscure: true,
+                icon: Icons.lock_outline,
+              ),
+            ],
+          )),
+        ],
+      ),
+    ));
+  }
+
+  
+}
