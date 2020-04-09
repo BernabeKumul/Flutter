@@ -1,4 +1,5 @@
 import 'package:app_demo/app/Core/Auth/BaseAuth.dart';
+import 'package:app_demo/app/page/Widget/card.dart';
 import 'package:app_demo/app/page/Widget/custom_carrousel.dart';
 import 'package:app_demo/app/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
@@ -194,83 +195,27 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 10,
               ),
-              Card(
-                  child: Container(
-                // width: 100,
-                height: 100,
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: Image.asset(
-                        "assets/img/img3.jpg",
-                        fit: BoxFit.fitHeight,
-                      ),
-
-                      title: Text(
-                        "Album 2",
-                        style: TextStyle(
-                            fontSize: 14.0, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text("Album",
-                                style: TextStyle(
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.normal)),
-                            Text('Population: ',
-                                style: TextStyle(
-                                    fontSize: 11.0,
-                                    fontWeight: FontWeight.normal)),
-                          ]),
-                      //trailing: ,
-                      onTap: () {
-                        Navigator.pushNamed(context, '/Detail');
-                      },
-                    )
-                  ],
-                ),
-              )),
-              Card(
-                  child: Container(
-                // width: 100,
-                height: 100,
-                child: Column(
-                  children: <Widget>[
-                    ListTile(
-                      leading: Image.asset(
-                        "assets/img/img1.jpg",
-                        fit: BoxFit.cover,
-                      ),
-
-                      title: Text(
-                        "Album 1",
-                        style: new TextStyle(
-                            fontSize: 14.0, fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            new Text("Album",
-                                style: new TextStyle(
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.normal)),
-                            new Text('Population: ',
-                                style: new TextStyle(
-                                    fontSize: 11.0,
-                                    fontWeight: FontWeight.normal)),
-                          ]),
-                      //trailing: ,
-                      onTap: () {
-                        Navigator.pushNamed(context, '/Detail');
-                        // Navigator.pushNamed(context, '/cart');
-                      },
-                    )
-                  ],
-                ),
-              ))
+              cardHome(
+                      title: 'Album 1',
+                      subtitle: 'Mi Album rfer',
+                      img: 'assets/img/img3.jpg'),
+                      SizedBox(
+                height: 10,
+              ),
+              cardHome(
+                      title: 'Album 2',
+                      subtitle: 'Easy photo',
+                      img: 'assets/img/img4.jpg'),
+                      SizedBox(
+                height: 10,
+              ),
+              cardHome(
+                      title: 'Album 2',
+                      subtitle: 'Pixi album',
+                      img: 'assets/img/img2.jpg'),
+                      SizedBox(
+                height: 10,
+              )
             ],
           )
         ],
@@ -323,46 +268,5 @@ class _HomePageState extends State<HomePage> {
       )
     ];
     return _pageOptions[tab];
-  }
-
-  Future _askUser() async {
-    switch (await showDialog(
-        context: context,
-        /*it shows a popup with few options which you can select, for option we
-        created enums which we can use with switch statement, in this first switch
-        will wait for the user to select the option which it can use with switch cases*/
-        child: new SimpleDialog(
-          title: new Text('Do you like Flutter?'),
-          children: <Widget>[
-            new SimpleDialogOption(
-              child: new Text('Yes!!!'),
-              onPressed: () {
-                Navigator.pop(context, Answers.YES);
-              },
-            ),
-            new SimpleDialogOption(
-              child: new Text('NO :('),
-              onPressed: () {
-                Navigator.pop(context, Answers.NO);
-              },
-            ),
-            new SimpleDialogOption(
-              child: new Text('Maybe :|'),
-              onPressed: () {
-                Navigator.pop(context, Answers.MAYBE);
-              },
-            ),
-          ],
-        ))) {
-      case Answers.YES:
-        // _setValue('Yes');
-        break;
-      case Answers.NO:
-        // _setValue('No');
-        break;
-      case Answers.MAYBE:
-        // _setValue('Maybe');
-        break;
-    }
   }
 }
