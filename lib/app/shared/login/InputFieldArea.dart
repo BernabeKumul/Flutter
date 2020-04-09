@@ -30,7 +30,7 @@ class InputFieldArea extends StatelessWidget {
           hintText: hint,
           hintStyle: const TextStyle(color: Colors.white54, fontSize: 15.0),
           contentPadding: const EdgeInsets.only(
-              top: 30.0, right: 30.0, bottom: 30.0, left: 5.0),
+              top: 30.0, right: 30.0, bottom: 15.0, left: 5.0),
         ),
       ),
     ));

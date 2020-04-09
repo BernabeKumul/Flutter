@@ -66,7 +66,7 @@ class _SigUpPageState extends State<SignUpPage> {
                               _submitButton(),
                             ],
                           ),
-                         Align(
+                        Align(
                           alignment: Alignment.bottomCenter,
                           child: _loginAccountLabel(),
                         ),

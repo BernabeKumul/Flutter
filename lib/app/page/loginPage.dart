@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               _title(),
-                              SizedBox(height: 20),
+                              SizedBox(height: 30),
                               Container(
                                 alignment: Alignment.topLeft,
                                 padding: EdgeInsets.symmetric(horizontal: 20),
@@ -61,11 +61,11 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.white54),
                               )),
                               new FormContainer(),
-                              SizedBox(height: 30),
+                              SizedBox(height: 40),
                               _submitButton(),
                               _labelPassword(),
                               _divider(),
-                              SizedBox(height: 20),
+                              SizedBox(height: 30),
                                _buildIcon(),
                             ],
                           ),

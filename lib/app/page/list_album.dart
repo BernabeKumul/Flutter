@@ -12,21 +12,8 @@ class _ListAlbumPageState extends State<ListAlbumPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fotos'),
+        title: Text( 'Easy Photo', style: TextStyle(color:  Colors.white)),
         centerTitle: true,
-        actions: <Widget>[
-          Container(
-            // padding: EdgeInsets.only(right: 20.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/cart');
-              },
-            ),
-          )
-        ],
       ),
       body: Container(
           margin: EdgeInsets.all(5.0),
@@ -34,650 +21,101 @@ class _ListAlbumPageState extends State<ListAlbumPage> {
             children: <Widget>[
               Column(
                 children: <Widget>[
+                  SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        width: (MediaQuery.of(context).size.width / 2) -10,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.google.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img3.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                    // offset: Offset(0.0, 2.0),
-                                    // blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Familia",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.facebook.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img2.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Viajes",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                      _card("assets/img/background_login.png", "Amor", "www.amor.com"),
+                      _card("assets/img/img2.jpg", "Bebes", "www.bebes.com")
                     ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  SizedBox(height: 10),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Container(
-                        width: (MediaQuery.of(context).size.width / 2) -10,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.google2.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img4.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                    // offset: Offset(0.0, 2.0),
-                                    // blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Familia",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.facebook1.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img3.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Viajes",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
+                      _card("assets/img/img3.jpg", "Cumpleaños", "www.cumpleanios.com"),
+                      _card("assets/img/img4.jpg", "Familia", "www.familia.com")
                     ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ), 
-                   Row(
-                    children: <Widget>[
-                      Container(
-                        width: (MediaQuery.of(context).size.width / 2) -10,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.google22.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img1.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                    // offset: Offset(0.0, 2.0),
-                                    // blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Familia",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.facebook11.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img3.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Viajes",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                   Row(
-                    children: <Widget>[
-                      Container(
-                        width: (MediaQuery.of(context).size.width / 2) -10,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                          
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.google2h.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img4.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                    // offset: Offset(0.0, 2.0),
-                                    // blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Familia",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2,
-                        child: Stack(
-                          alignment: Alignment.topCenter,
-                          children: <Widget>[
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0.0, 2.0),
-                                    blurRadius: 2.0,
-                                  ),
-                                ],
-                              ),
-                              child: Stack(
-                                children: <Widget>[
-                                  Hero(
-                                    tag: "www.facebook1d.com",
-                                    child: ClipRRect(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                      child: Image(
-                                        height: 180.0,
-                                        width: 180.0,
-                                        image:
-                                            AssetImage("assets/img/img1.jpg"),
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
-                                    left: 0,
-                                    bottom: 0,
-                                    width:  (MediaQuery.of(context).size.width / 2)-0,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(5.0),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black54,
-                                  ),
-                                ],
-                              ),
-                                      child: 
-                                      Container(
-                                        padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-                                        child: 
-                                        Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          "Viajes",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 20.0,
-                                            fontWeight: FontWeight.w600,
-                                            letterSpacing: 1.2,
-                                          ),
-                                        ),
-                                        
-                                      ],
-                                    ),
-                                      )
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 10,
                   )
                 ],
               )
             ],
           )),
     );
+  }
+
+  Widget _card(String urlImg, String title, String tagUrl){
+    return  Container(
+              width: (MediaQuery.of(context).size.width / 2) -10,
+              child: Stack(
+              alignment: Alignment.center,
+              children: <Widget>[
+                        Container(
+                        decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: [
+                                BoxShadow(
+                                    color: Colors.white,
+                                    offset: Offset(0.0, 2.0),
+                                    blurRadius: 2.0,
+                                  ),
+                                ],
+                              ),
+                              child: Stack(
+                                children: <Widget>[
+                                  Hero(
+                                    tag: tagUrl,
+                                    child: ClipRRect(
+                                      child: Image(
+                                        height: 180.0,
+                                        width: 180.0,
+                                        image:
+                                            AssetImage(urlImg),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  _titleCard(title)
+                                ],
+                              ),
+                            )
+                        ],
+                      ),
+                    );
+  }
+
+  Widget _titleCard(String title){
+        return Positioned(
+                left: 0,
+                bottom: 0,
+                width:  (MediaQuery.of(context).size.width / 2)-0,
+                child: Container(
+                        decoration: BoxDecoration(
+                        gradient: new LinearGradient(
+                        colors: <Color>[
+                                   const Color.fromRGBO(0, 0, 0, 0.5),
+                                   const Color.fromRGBO(0, 0, 0, 0.5),
+                                   ],
+                                   stops: [0.2, 1.0],
+                                   begin: const FractionalOffset(0.0, 0.0),
+                                   end: const FractionalOffset(0.0, 1.0),
+                                  )),
+                        child: 
+                        Container(
+                              padding:EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                              child: Column(
+                                   crossAxisAlignment:
+                                   CrossAxisAlignment.start,
+                                   children: <Widget>[
+                                   Text(
+                                       title,
+                                       style: TextStyle(
+                                       color: Colors.white,
+                                       fontSize: 16.0,
+                                       ),
+                                        ),
+                                      ],
+                                   )))
+               );
   }
 }
