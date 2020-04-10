@@ -6,15 +6,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
-import 'app/Core/Auth/Auth.dart';
-import 'app/page/carrocel.dart';
 import 'app/page/cart_page.dart';
 import 'app/page/detail_album.dart';
-import 'app/page/feature_selection_album.dart';
 import 'app/page/feature_selection_page.dart';
 import 'app/page/list_Picture.dart';
 import 'app/page/list_album.dart';
-import 'app/page/root_page.dart';
+import 'app/page/loginPage.dart';
+import 'app/page/signup.dart';
 
 void main() {
   final initialState =
@@ -40,8 +38,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: '/',
         routes: {
-          '/': (context) => RootPage(auth: Auth()),
-          // '/': (context) => CarouselDemo(),
+          '/': (context) => LoginPage(),
+          '/signup': (context) => SignUpPage(),
           '/home': (context) => HomePage(),
           '/create': (context) => FeatureSelectionPage(),
           '/cart': (context) => CartPage(),

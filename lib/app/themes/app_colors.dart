@@ -41,4 +41,9 @@ class AppColors {
       1.0, // Move to bottom 10 Vertically
     ),
   );
+
+  static const BoxShadow shadow = BoxShadow(
+    color: Color.fromRGBO(0, 0, 0, .15),
+    blurRadius: 2, // soften the shadow
+  );
 }
