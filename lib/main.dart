@@ -12,6 +12,7 @@ import 'app/page/cart_page.dart';
 import 'app/page/detail_album.dart';
 import 'app/page/feature_selection_album.dart';
 import 'app/page/feature_selection_page.dart';
+import 'app/page/list_Picture.dart';
 import 'app/page/list_album.dart';
 import 'app/page/root_page.dart';
 
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
           '/cart': (context) => CartPage(),
           '/Detail': (context) => DeailPage(),
           '/ListAbum': (context) => ListAlbumPage(),
+          '/ListPicture': (context) => ListPicturePage(),
         });
   }
 }
