@@ -1,6 +1,7 @@
 import 'package:app_demo/app/Core/Auth/BaseAuth.dart';
 import 'package:app_demo/app/page/Widget/card.dart';
 import 'package:app_demo/app/page/Widget/custom_carrousel.dart';
+import 'package:app_demo/app/page/layout-circles.dart';
 import 'package:app_demo/app/themes/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -111,75 +112,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Image.asset('assets/img/icon-name.png'),
-        centerTitle: true,
-        actions: <Widget>[
-          Container(
-            padding: EdgeInsets.only(right: 20.0),
-            child: IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/cart');
-              },
-            ),
-          )
-        ],
-      ),
-      body: _Tab(context, _selectedPage),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            SizedBox(
-              height: 40,
-            ),
-            ListTile(
-              leading: CircleAvatar(
-                  // backgroundColor: Color(0xff4db6ac),
-                  ),
-              title: Text("Mauricio Canche"),
-              subtitle: Text("example@desarrollo.com"),
-            ),
-            ListTile(
-              leading: Icon(Icons.home, color: Color(0xff4db6ac)),
-              title: Text("Inicio"),
-              onTap: () {},
-            ),
-            ListTile(
-                leading: Icon(Icons.account_box, color: Color(0xff4db6ac)),
-                title: Text('Perfil'),
-                onTap: () {}),
-            ListTile(
-                leading: Icon(Icons.exit_to_app, color: Color(0xff4db6ac)),
-                title: Text("Salir"),
-                onTap: () {}),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/create');
-        },
-        child: Icon(Icons.add_a_photo),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedPage,
-          onTap: (int currentPage) {
-            setState(() {
-              _selectedPage = currentPage;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text('Inicio')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline), title: Text('perfil'))
-          ]),
-    );
+    return LayoutCircles(colorCircles: Color(0xFFE0703E), child: Container());
   }
 
   Widget _Tab(BuildContext context, int tab) {
@@ -196,24 +129,24 @@ class _HomePageState extends State<HomePage> {
                 height: 10,
               ),
               cardHome(
-                      title: 'Album 1',
-                      subtitle: 'Mi Album rfer',
-                      img: 'assets/img/img3.jpg'),
-                      SizedBox(
+                  title: 'Album 1',
+                  subtitle: 'Mi Album rfer',
+                  img: 'assets/img/img3.jpg'),
+              SizedBox(
                 height: 10,
               ),
               cardHome(
-                      title: 'Album 2',
-                      subtitle: 'Easy photo',
-                      img: 'assets/img/img4.jpg'),
-                      SizedBox(
+                  title: 'Album 2',
+                  subtitle: 'Easy photo',
+                  img: 'assets/img/img4.jpg'),
+              SizedBox(
                 height: 10,
               ),
               cardHome(
-                      title: 'Album 2',
-                      subtitle: 'Pixi album',
-                      img: 'assets/img/img2.jpg'),
-                      SizedBox(
+                  title: 'Album 2',
+                  subtitle: 'Pixi album',
+                  img: 'assets/img/img2.jpg'),
+              SizedBox(
                 height: 10,
               )
             ],
