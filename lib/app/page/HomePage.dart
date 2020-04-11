@@ -3,7 +3,6 @@ import 'package:app_demo/app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'Widget/card.dart';
 
-
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
 
@@ -22,8 +21,7 @@ class Ad {
 }
 
 class _HomePageState extends State<HomePage> {
-
-int _selectedPage = 0;
+  int _selectedPage = 0;
 
   List<Ad> ads = [
     new Ad(
@@ -98,208 +96,246 @@ int _selectedPage = 0;
         });
   }
 
-  Widget _apbar(){
+  Widget _apbar() {
     return Row(
-              children: <Widget>[
-                   Container(
-                   alignment: Alignment.bottomLeft,
-                   margin: EdgeInsets.symmetric(vertical: 7),
-                   width: MediaQuery.of(context).size.width * .73,
-                   child: Image.asset('assets/img/icon-name.png'),
-                   ),
-                   Container(
-                   alignment:  Alignment.centerRight,
-                   width: MediaQuery.of(context).size.width * .20,
-                   child: IconButton(
-                   icon: Icon(
-                   Icons.shopping_cart,
-                   color:  Colors.black,
-                   ),
-                   onPressed: () {
-                    Navigator.pushNamed(context, '/cart');
-                   },
-                   )
-                   )],
-            );
+      children: <Widget>[
+        Container(
+          alignment: Alignment.bottomLeft,
+          margin: EdgeInsets.symmetric(vertical: 7),
+          width: MediaQuery.of(context).size.width * .73,
+          child: Image.asset('assets/img/icon-name.png'),
+        ),
+        Container(
+            alignment: Alignment.centerRight,
+            width: MediaQuery.of(context).size.width * .20,
+            child: IconButton(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.black,
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/cart');
+              },
+            ))
+      ],
+    );
   }
 
-
-  Widget _album(){
+  Widget _album() {
     return Stack(
+      children: <Widget>[
+        Container(
+          color: Colors.white,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
+                //Encabezado
+                alignment: Alignment.centerRight,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .12,
                 color: Colors.white,
+                child: _apbar(),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .38,
+                child: Container(
+                  child: createCarouselSlider(),
+                ),
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * .40,
                 child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                Container( //Encabezado
-                      alignment:  Alignment.centerRight,
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * .12,
-                      color: Colors.white,
-                      child: _apbar(),
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      margin: EdgeInsets.symmetric(horizontal: 15),
+                      child: Text('Mis Albums',
+                          style:
+                              TextStyle(color: Colors.black45, fontSize: 16)),
+                    ),
+                    Expanded(
+                      child: ListView(
+                        children: <Widget>[
+                          cardHome(
+                              title: 'Viaje en la playa',
+                              subtitle:
+                                  'Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla',
+                              img: 'assets/img/background_login.png'),
+                          SizedBox(height: 15),
+                          cardHome(
+                              title: 'Viaje en cancún',
+                              subtitle:
+                                  'Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla',
+                              img: 'assets/img/img1.jpg'),
+                          SizedBox(height: 15),
+                          cardHome(
+                              title: 'Viaje en tulun',
+                              subtitle:
+                                  'Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla',
+                              img: 'assets/img/img2.jpg')
+                        ],
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * .38,
-                        child: Container(
-                            child: createCarouselSlider(),
-                          ),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height * .40,
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              alignment: Alignment.bottomLeft,
-                              margin: EdgeInsets.symmetric(horizontal: 15),
-                              child: Text('Mis Albums', style: TextStyle(color: Colors.black45, fontSize: 16)),
-                            ),
-                            Expanded(
-                              child: ListView(
-                                children: <Widget>[
-                                  cardHome(
-                                      title: 'Viaje en la playa',
-                                      subtitle: 'Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla',
-                                      img: 'assets/img/background_login.png'
-                                  ),
-                                  SizedBox(height: 15),
-                                   cardHome(
-                                      title: 'Viaje en cancún',
-                                      subtitle: 'Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla',
-                                      img: 'assets/img/img1.jpg'
-                                  ),
-                                  SizedBox(height: 15),
-                                   cardHome(
-                                      title: 'Viaje en tulun',
-                                      subtitle: 'Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla, Lorem ipsum dolor sit met, bla bla bla bla',
-                                      img: 'assets/img/img2.jpg'
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            );
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+        )
+      ],
+    );
   }
 
-Widget _Tab(BuildContext context, int tab) {
-    final _pageOptions = [
-      Container(
-          child: _album()
-      ),
-      Container( //Perfil de usuario
-        child: Column(
-          children: <Widget>[
-            Container( //Encabezado
-                      alignment:  Alignment.centerRight,
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * .12,
-                      color: Colors.white,
-                      child: _apbar(),
-                      ),
-            Stack(
+  Widget _perfil() {
+    return Stack(
+      children: <Widget>[
+        Container(
+            color: Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.only(
-                    top: 25,
-                    bottom: Consts.padding,
-                    left: Consts.padding,
-                    right: Consts.padding,
-                  ),
-                  margin: EdgeInsets.only(top: 40),
-                  decoration: new BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.circular(5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 3.0,
-                        offset: const Offset(0.0, 4.0),
-                      ),
-                    ],
-                  ),
+                  //Encabezado
+                  alignment: Alignment.centerRight,
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * .12,
+                  color: Colors.white,
+                  child: _apbar(),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(top: 40, left: 20, bottom: 20, right: 20),
                   child: Column(
-                    mainAxisSize: MainAxisSize.min, // To make the card compact
                     children: <Widget>[
-                      Text(
-                        "Juanito Perez",
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Divider(
-                        thickness: 1.5,
-                      ),
-                      SizedBox(height: 8.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      Stack(
                         children: <Widget>[
                           Container(
-                            child: Column(
-                              children: <Widget>[
-                                Text(
-                                  "3",
-                                  style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w900),
+                            padding: EdgeInsets.only(
+                              top: 25,
+                              bottom: Consts.padding,
+                              left: Consts.padding,
+                              right: Consts.padding,
+                            ),
+                            margin: EdgeInsets.only(top: 40),
+                            decoration: new BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.rectangle,
+                              borderRadius: BorderRadius.circular(5),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black26,
+                                  blurRadius: 5.0,
+                                  offset: const Offset(1.0, 2.0),
                                 ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                Text(
-                                  "Albumnes",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black45),
-                                )
                               ],
                             ),
-                          ),
-                          Container(
                             child: Column(
+                              mainAxisSize:
+                                  MainAxisSize.min, // To make the card compact
                               children: <Widget>[
                                 Text(
-                                  "5",
+                                  "Juanito Perez",
                                   style: TextStyle(
-                                    fontSize: 16.0,
+                                    fontSize: 18.0,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 8,
+                                Divider(
+                                  thickness: 1.5,
                                 ),
-                                Text(
-                                  "Albumnes",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.black45),
-                                )
+                                SizedBox(height: 8.0),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: <Widget>[
+                                    Container(
+                                      child: Column(
+                                        children: <Widget>[
+                                          Text(
+                                            "3",
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.w900),
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                            "Albumnes",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black45),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Column(
+                                        children: <Widget>[
+                                          Text(
+                                            "5",
+                                            style: TextStyle(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Text(
+                                            "Albumnes",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                color: Colors.black45),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Align(
+                                  alignment: Alignment.bottomRight,
+                                ),
                               ],
                             ),
-                          )
+                          ),
+                          Positioned(
+                              left: 110,
+                              right: 110,
+                              child: Stack(
+                                children: <Widget>[
+                                  DecoratedBox(
+                                    decoration: new BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.rectangle,
+                                      borderRadius: BorderRadius.circular(5),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black26,
+                                          blurRadius: 10.0,
+                                          offset: const Offset(10.0, 4.0),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  CircleAvatar(
+                                    backgroundImage:
+                                        AssetImage("assets/img/img1.jpg"),
+                                    backgroundColor: Colors.blueAccent,
+                                    radius: Consts.avatarRadius,
+                                  ),
+                                ],
+                              )),
                         ],
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
+                      SizedBox(
+                        height: 20,
                       ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                    left: 110,
-                    right: 110,
-                    child: Stack(
-                      children: <Widget>[
-                        DecoratedBox(
+                      SizedBox(
+                        child: Container(
                           decoration: new BoxDecoration(
                             color: Colors.white,
                             shape: BoxShape.rectangle,
@@ -307,113 +343,105 @@ Widget _Tab(BuildContext context, int tab) {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black26,
-                                blurRadius: 10.0,
-                                offset: const Offset(10.0, 4.0),
+                                blurRadius: 5.0,
+                                offset: const Offset(1.0, 2.0),
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              Container(
+                                alignment: Alignment.topLeft,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20, 10, 10, 5),
+                                child: Text(
+                                  "User Information",
+                                  style: TextStyle(
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16),
+                                ),
+                              ),
+                              Divider(),
+                              ListTile(
+                                title: Text('Email',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                                subtitle: Text('antonio@gmail.com'),
+                                leading: Icon(
+                                  Icons.email,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              ListTile(
+                                title: Text('Phone',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                                subtitle: Text('(408) 555-1212'),
+                                leading: Icon(
+                                  Icons.phone,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                              ListTile(
+                                title: Text('About',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.w500)),
+                                subtitle: Text('Information'),
+                                leading: Icon(
+                                  Icons.portrait,
+                                  color: Colors.grey,
+                                ),
                               ),
                             ],
                           ),
                         ),
-                        CircleAvatar(
-                          backgroundImage: AssetImage("assets/img/img1.jpg"),
-                          backgroundColor: Colors.blueAccent,
-                          radius: Consts.avatarRadius,
-                        ),
-                      ],
-                    )),
+                      )
+                    ],
+                  ),
+                )
               ],
-            ),
-            SizedBox(
-                height: 10,
-              ),
-            SizedBox(
-              child: Card(
-                margin: EdgeInsets.all(0),
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.topLeft,
-                      padding: EdgeInsetsDirectional.fromSTEB(20,10,10,5),
-                     child: Text("User Information", style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w700,fontSize: 16),),
-                    ),
-                    Divider(),
-                    ListTile(
-                      contentPadding: EdgeInsets.all(10),
-                      title: Text('Email',
-                          style: TextStyle(fontWeight: FontWeight.w500)),
-                      subtitle: Text('antonio@gmail.com'),
-                      leading: Icon(
-                        Icons.email,
-                        color: Colors.blue[500],
-                      ),
-                    ),
-                     
-                    ListTile(
-                      title: Text('Phone',
-                          style: TextStyle(fontWeight: FontWeight.w500)),
-                      subtitle: Text('(408) 555-1212'),
-                      leading: Icon(
-                        Icons.phone,
-                        color: Colors.blue[500],
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('About',
-                          style: TextStyle(fontWeight: FontWeight.w500)),
-                      subtitle: Text('Information'),
-                      leading: Icon(
-                        Icons.portrait,
-                        color: Colors.blue[500],
-                      ),
-                    ),
-                    ListTile(
-                      title: Text('About',
-                          style: TextStyle(fontWeight: FontWeight.w500)),
-                      subtitle: Text('Information'),
-                      leading: Icon(
-                        Icons.portrait,
-                        color: Colors.blue[500],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
+            ))
+      ],
+    );
+  }
+
+  Widget _Tab(BuildContext context, int tab) {
+    final _pageOptions = [
+      Container(
+        child: _album(),
         ),
+      Container(
+        child: _perfil(),
       )
-    
     ];
     return _pageOptions[tab];
   }
 
-
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _Tab(context, _selectedPage),
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.deepOrangeAccent,
-              onPressed: () {
-                Navigator.pushNamed(context, '/create');
-              },
-              child: Icon(Icons.library_add, color: Colors.white),
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _selectedPage,
-          onTap: (int currentPage) {
-            setState(() {
-              _selectedPage = currentPage;
-            });
+        body: SingleChildScrollView(child: _Tab(context, _selectedPage)),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.deepOrangeAccent,
+          onPressed: () {
+            Navigator.pushNamed(context, '/create');
           },
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text('Inicio')),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline), title: Text('perfil'))
-          ])
-          );
-        
+          child: Icon(Icons.library_add, color: Colors.white),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _selectedPage,
+            onTap: (int currentPage) {
+              setState(() {
+                _selectedPage = currentPage;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home), title: Text('Inicio')),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person_outline), title: Text('perfil'))
+            ]));
   }
 }
 
