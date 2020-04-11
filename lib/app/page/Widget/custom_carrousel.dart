@@ -49,7 +49,7 @@ class _CustomCarrouselState extends State<CustomCarrousel> {
 
   Widget _carrousel(MediaQueryData deviceInfo) {
     return CarouselSlider(
-      height: deviceInfo.size.height * .18,
+      height: deviceInfo.size.height * .28,
       autoPlayInterval: Duration(seconds: 6),
       viewportFraction: 1.0,
       aspectRatio: 1,
@@ -64,16 +64,16 @@ class _CustomCarrouselState extends State<CustomCarrousel> {
         (item) {
           return Container(
             margin: EdgeInsets.only(bottom: 12),
-            width: deviceInfo.size.width - 32,
+            width: deviceInfo.size.width * 0.90,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
                 boxShadow: [AppColors.simpleShadow]),
             child: GestureDetector(
               onTap: () {
                 widget.onPress(context, item);
               },
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(5),
                 child: Image.asset(
                   item.imageURL,
                   fit: BoxFit.cover,
