@@ -1,7 +1,5 @@
 import 'dart:ui';
-
 import 'package:app_demo/app/Core/models/TypeAlbum.dart';
-import 'package:app_demo/app/page/carrocel.dart';
 import 'package:flutter/material.dart';
 
 class DeailPage extends StatefulWidget {
@@ -105,6 +103,24 @@ class _DeailPagePageState extends State<DeailPage> {
                       ),
                       SizedBox(
                         height: 20,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            const Icon(
+                              Icons.cancel,
+                              color: Colors.red,
+                              size: 15,
+                              textDirection: TextDirection.rtl,
+                            ),
+                            Text(
+                              " Incompleto (1 de 60 fotos)",
+                              style: TextStyle(color: Colors.black54),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
                       ),
                       Container(
                         height: 150,
@@ -122,13 +138,18 @@ class _DeailPagePageState extends State<DeailPage> {
                         alignment: Alignment.center,
                         child: Stack(
                           children: <Widget>[
-                            Card(
-                              child: Image.asset(
-                                'assets/img/img1.jpg',
-                                fit: BoxFit.fitHeight,
-                                height: 150,
-                                width: 200,
+                            GestureDetector(
+                              child: Card(
+                                child: Image.asset(
+                                  'assets/img/img1.jpg',
+                                  fit: BoxFit.fitHeight,
+                                  height: 150,
+                                  width: 200,
+                                ),
                               ),
+                              onTap: () {
+                                Navigator.pushNamed(context, '/ListPicture');
+                              },
                             ),
                             Container(
                                 alignment: Alignment.bottomRight,
@@ -139,10 +160,7 @@ class _DeailPagePageState extends State<DeailPage> {
                                       gradient: LinearGradient(
                                           begin: Alignment.centerLeft,
                                           end: Alignment.centerRight,
-                                          colors: [
-                                            Colors.orange,
-                                            Colors.red
-                                          ])),
+                                          colors: [Colors.orange, Colors.red])),
                                   child: const Icon(
                                     Icons.edit,
                                     color: Colors.white,
