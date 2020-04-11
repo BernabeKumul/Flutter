@@ -3,6 +3,7 @@ import 'package:app_demo/app/page/layout-circles.dart';
 import 'package:app_demo/app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'Widget/card.dart';
+import 'Widget/perfil_page.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -152,102 +153,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _Tab(BuildContext context, int tab) {
-    final _pageOptions = [_album(), _userPerfil()];
-    return _pageOptions[tab];
-  }
+    final _pageOptions = [_album(), PerfilPage()];
 
-  Widget _userPerfil() {
-    return Container(
-        //Perfil de usuario
-        child: Column(children: <Widget>[
-      Stack(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(
-              top: 25,
-              bottom: Consts.padding,
-              left: Consts.padding,
-              right: Consts.padding,
-            ),
-            margin: EdgeInsets.only(top: 40),
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(5),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black26,
-                  blurRadius: 3.0,
-                  offset: const Offset(0.0, 4.0),
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min, // To make the card compact
-              children: <Widget>[
-                Text(
-                  "Juanito Perez",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                Divider(
-                  thickness: 1.5,
-                ),
-                SizedBox(height: 8.0),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              "3",
-                              style: TextStyle(
-                                  fontSize: 16.0, fontWeight: FontWeight.w900),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "Albumnes",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black45),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              "5",
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(
-                              "Albumnes",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.black45),
-                            )
-                          ],
-                        ),
-                      ),
-                    ])
-              ],
-            ),
-          )
-        ],
-      )
-    ]));
+    return _pageOptions[tab];
   }
 
   @override
@@ -277,11 +185,4 @@ class _HomePageState extends State<HomePage> {
                   icon: Icon(Icons.person_outline), title: Text('perfil'))
             ]));
   }
-}
-
-class Consts {
-  Consts._();
-
-  static const double padding = 20.0;
-  static const double avatarRadius = 30.0;
 }
