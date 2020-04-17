@@ -1,6 +1,0 @@
-
-class IncrementCounter {
-  
-}
-
-class DecrementCounter {}

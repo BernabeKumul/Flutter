@@ -1,9 +1,14 @@
-import 'package:app_demo/app/page/HomePage.dart';
+import 'package:app_demo/app/Core/store/effects/userEfects.dart';
+import 'package:app_demo/app/Core/store/models/UserState.dart';
+import 'package:app_demo/app/Core/store/models/appState.dart';
+import 'package:app_demo/app/page/Home/HomePage.dart';
 import 'package:app_demo/app/page/signup.dart';
 import 'package:app_demo/app/shared/login/InputFieldArea.dart';
 import 'package:app_demo/app/themes/background.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:redux/redux.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -28,7 +33,11 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    StoreConnector<AppState, UsersScreenProps>(
+      converter: (store) => mapStateToProps(store),
+      builder: (context, props) {
+        return Scaffold(
         body: 
            SingleChildScrollView(
              child: Container(
@@ -62,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                               )),
                               new FormContainer(),
                               SizedBox(height: 40),
-                              _submitButton(),
+                              _submitButton(props),
                               _labelPassword(),
                               _divider(),
                               SizedBox(height: 30),
@@ -78,6 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
            )
            ));
+      }
+    );  
   }
 
  Widget _loginAccountLabel() {
@@ -187,7 +198,7 @@ Widget _labelPassword(){
         ));
 }
 
-Widget _submitButton() {
+Widget _submitButton(UsersScreenProps props) {
     return InkWell(
         child: Row(
           children: <Widget>[
@@ -210,6 +221,9 @@ Widget _submitButton() {
           ],
         ),
         onTap: () {
+
+          // props.login();
+          // print('isLoading ${props.isLoading}');
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomePage()));
         });
@@ -279,7 +293,7 @@ class FormContainer extends StatelessWidget {
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          new Form(
+          Form(
               child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
@@ -300,5 +314,26 @@ class FormContainer extends StatelessWidget {
     ));
   }
 
-  
+}
+
+class UsersScreenProps {
+  final Function login;
+  final bool isLoading;
+  final UserResponse listResponse;
+
+  UsersScreenProps({
+    this.login,
+    this.isLoading,
+    this.listResponse,
+  });
+}
+
+UsersScreenProps mapStateToProps(Store<AppState> store) {
+  return UsersScreenProps(
+    listResponse: store.state.userState.user,
+    isLoading: store.state.userState.isLoading,
+    login: (){
+      store.dispatch(loginUser());
+    }
+  );
 }

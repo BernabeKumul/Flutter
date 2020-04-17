@@ -1,11 +1,12 @@
 import 'package:app_demo/app/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class cardHome extends StatelessWidget {
+class CardHome extends StatelessWidget {
   String img;
   String title;
   String subtitle;
-  cardHome({
+  
+  CardHome({
     this.img,
     @required this.title,
     @required this.subtitle,
@@ -103,7 +104,7 @@ class cardHome extends StatelessWidget {
         children: <Widget>[
           InkWell(
               onTap: () => {print('apretado')},
-              child: Icon(Icons.delete, color: Colors.black26, size: 22)),
+              child: Icon(Icons.delete_outline, color: Colors.black26, size: 22)),
         ],
       ),
     );;

@@ -141,7 +141,7 @@ class _DeailPagePageState extends State<DeailPage> {
                             GestureDetector(
                               child: Card(
                                 child: Image.asset(
-                                  'assets/img/img1.jpg',
+                                  'assets/img/img2.jpg',
                                   fit: BoxFit.fitHeight,
                                   height: 150,
                                   width: 200,
