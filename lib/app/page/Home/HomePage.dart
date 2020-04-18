@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  AlbumService albumService = new AlbumService("https://192.168.43.127:44380/api");
+  AlbumService albumService = new AlbumService();
   int _selectedPage = 0;
 
   @override

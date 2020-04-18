@@ -17,8 +17,3 @@ ThunkAction<AppState> loginUser(){
      });
   };
   }
-
-
-  class serviceBase{
-    
-  }

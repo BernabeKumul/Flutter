@@ -11,7 +11,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import '../AlbumsProps.dart';
 
 class AlbumsPage extends StatelessWidget {
-  AlbumService albumService = new AlbumService("https://192.168.0.102:44380/api");
+  AlbumService albumService = new AlbumService();
 
   AlbumsPage({Key key}) : super(key: key);
 

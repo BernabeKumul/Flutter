@@ -1,4 +1,3 @@
-
 import 'package:app_demo/app/Core/models/Album.dart';
 
 class StartLoadingAlbumAction{
