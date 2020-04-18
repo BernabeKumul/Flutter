@@ -1,6 +1,6 @@
 import 'package:app_demo/app/Core/store/models/AlbumState.dart';
 import 'package:app_demo/app/Core/store/models/UserState.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:meta/meta.dart';
 
 @immutable
 class AppState{

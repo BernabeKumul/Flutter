@@ -15,8 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-  AlbumService albumService = new AlbumService();
   int _selectedPage = 0;
 
   @override
@@ -43,7 +41,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return 
     StoreConnector<AppState, AlbumsProps>(
-      converter: (store) => mapToProps(store, albumService),
+      converter: (store) => mapToProps(store),
       onInitialBuild: (props) => this.handleInitialBuild(props),
       builder:(context, props) {
       bool loading = props.isLoading;

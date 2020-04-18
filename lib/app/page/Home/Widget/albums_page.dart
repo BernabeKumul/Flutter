@@ -1,4 +1,3 @@
-import 'package:app_demo/app/Core/Service/AlbumService.dart';
 import 'package:app_demo/app/Core/models/Album.dart';
 import 'package:app_demo/app/Core/models/post.dart';
 import 'package:app_demo/app/Core/store/models/appState.dart';
@@ -8,11 +7,7 @@ import 'package:app_demo/app/page/Home/Widget/custom_carrousel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-import '../AlbumsProps.dart';
-
 class AlbumsPage extends StatelessWidget {
-  AlbumService albumService = new AlbumService();
-
   AlbumsPage({Key key}) : super(key: key);
 
    List<Post> ads = [
@@ -58,10 +53,10 @@ class AlbumsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return 
-    StoreConnector<AppState, AlbumsProps>(
-    converter: (store) => mapToProps(store, albumService),
-    builder:(context, props) {
-    List<Album> albums = props.lstAlbums;
+    StoreConnector<AppState, List<Album>>(
+    converter: (store) => store.state.albumState.albums,
+    distinct: true,
+    builder:(_, albums) {
     return Container(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

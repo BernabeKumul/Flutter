@@ -1,7 +1,8 @@
 
 import 'package:app_demo/app/Core/models/Album.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:meta/meta.dart';
 
+@immutable
 class AlbumState{
   final bool isLoading;
   final bool loadingError;
