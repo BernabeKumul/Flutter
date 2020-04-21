@@ -4,7 +4,7 @@ import 'package:app_demo/app/Core/exception/exception.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient{
-    String _urlBase = 'https://192.168.0.102:44380/api/';
+    String _urlBase = 'https://192.168.43.110:44380/api/';
 
     Future<http.Response> Get(OnlineParams object) async {
         try {

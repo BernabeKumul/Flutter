@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   void handleInitialBuild(AlbumsProps props) {
     props.getAlbums();
+    props.getUser();
   }
 
   @override

@@ -1,6 +1,8 @@
 import 'dart:io';
 
+import 'package:app_demo/app/Core/Service/perfil_service.dart';
 import 'package:app_demo/app/Core/common/AlbumServiceDependency.dart';
+import 'package:app_demo/app/Core/common/perfil_service_dependency.dart';
 import 'package:app_demo/app/Core/utils/MyHttpOverrides.dart';
 import 'package:app_demo/app/page/Home/HomePage.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -22,10 +24,12 @@ import 'app/page/signup.dart';
 
 void main() {
 
-final middleWare = InjectedMiddleware<AlbumServiceDependency>(
+final middleWare = InjectedMiddleware<AlbumServiceDependency, PerfilServiceDependency>(
       deps: AlbumServiceDependency(
         albumService: AlbumService()
-      ));
+      ),
+      perf: PerfilServiceDependency(perfilService: PerfilService())
+      );
 
   final store = Store<AppState>(
       appReducer,

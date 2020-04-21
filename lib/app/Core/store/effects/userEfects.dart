@@ -5,7 +5,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 
 Future<http.Response> fetchget() {
-  return http.get('https://192.168.0.102:58385/api/values');
+  return http.get('https://192.168.43.110:58385/api/values');
 }
 
 ThunkAction<AppState> loginUser(){
